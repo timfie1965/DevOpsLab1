@@ -1,0 +1,86 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "networkInterfaceName": {
+            "value": "devopssvr0164"
+        },
+        "networkSecurityGroupName": {
+            "value": "DevOpsSvr01-nsg"
+        },
+        "networkSecurityGroupRules": {
+            "value": [
+                {
+                    "name": "RDP",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "3389"
+                    }
+                }
+            ]
+        },
+        "subnetName": {
+            "value": "Subnet"
+        },
+        "virtualNetworkId": {
+            "value": "/subscriptions/4059c467-a363-4e48-b323-edd5641500b2/resourceGroups/DevOps1/providers/Microsoft.Network/virtualNetworks/MyVNET"
+        },
+        "publicIpAddressName": {
+            "value": "DevOpsSvr01-ip"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "publicIpAddressSku": {
+            "value": "Basic"
+        },
+        "virtualMachineName": {
+            "value": "DevOpsSvr01"
+        },
+        "virtualMachineRG": {
+            "value": "DevOps1"
+        },
+        "osDiskType": {
+            "value": "Premium_LRS"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_DS1_v2"
+        },
+        "adminUsername": {
+            "value": "Azureadmin"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "4hvq5hvlstgpysawinvm"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "/subscriptions/4059c467-a363-4e48-b323-edd5641500b2/resourceGroups/DevOps1/providers/Microsoft.Storage/storageAccounts/4hvq5hvlstgpysawinvm"
+        },
+        "autoShutdownStatus": {
+            "value": "Enabled"
+        },
+        "autoShutdownTime": {
+            "value": "19:00"
+        },
+        "autoShutdownTimeZone": {
+            "value": "UTC"
+        },
+        "autoShutdownNotificationStatus": {
+            "value": "Disabled"
+        },
+        "autoShutdownNotificationLocale": {
+            "value": "en"
+        }
+    }
+}

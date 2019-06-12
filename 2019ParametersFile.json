@@ -21,7 +21,7 @@
       "value": "[deployment().properties.templateLink.uri]"
     },
     "_artifactsLocationSasToken": {
-      "value": "-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken (ConvertTo-SecureString -String "$(artifactsLocationSasToken)" -AsPlainText -Force)"
+      "type": "securestring"
     },
     "location": {
       "value": "EastUs"

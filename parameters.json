@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "value": "southcentralus"
+            "value": "eastus"
         },
         "networkInterfaceName": {
             "value": "sherwooddc1762"
@@ -74,7 +74,7 @@
             "value": "azureadmin"
         },
         "adminPassword": {
-            "value": null
+            "value": "Azurepass2019!"
         },
         "diagnosticsStorageAccountName": {
             "value": "forest2019diag"

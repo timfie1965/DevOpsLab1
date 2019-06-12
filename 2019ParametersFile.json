@@ -21,7 +21,7 @@
       "value": "[deployment().properties.templateLink.uri]"
     },
     "_artifactsLocationSasToken": {
-      "value": null
+      "value": ""
     },
     "location": {
       "value": "EastUs"

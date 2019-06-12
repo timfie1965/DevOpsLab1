@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "value": "eastus"
+            "value": "southcentralus"
         },
         "networkInterfaceName": {
-            "value": "devops100svr487"
+            "value": "sherwooddc1762"
         },
         "networkSecurityGroupName": {
-            "value": "DevOps100svr-nsg"
+            "value": "SherwoodDC1-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -32,11 +32,11 @@
             "value": "default"
         },
         "virtualNetworkName": {
-            "value": "DevOps100-vnet"
+            "value": "Forest2019-vnet"
         },
         "addressPrefixes": {
             "value": [
-                "10.0.2.0/24"
+                "10.0.1.0/24"
             ]
         },
         "subnets": {
@@ -44,13 +44,13 @@
                 {
                     "name": "default",
                     "properties": {
-                        "addressPrefix": "10.0.2.0/24"
+                        "addressPrefix": "10.0.1.0/24"
                     }
                 }
             ]
         },
         "publicIpAddressName": {
-            "value": "DevOps100svr-ip"
+            "value": "SherwoodDC1-ip"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
@@ -59,10 +59,10 @@
             "value": "Basic"
         },
         "virtualMachineName": {
-            "value": "DevOps100svr"
+            "value": "SherwoodDC1"
         },
         "virtualMachineRG": {
-            "value": "DevOps100"
+            "value": "Forest2019"
         },
         "osDiskType": {
             "value": "Premium_LRS"
@@ -71,16 +71,16 @@
             "value": "Standard_DS1_v2"
         },
         "adminUsername": {
-            "value": "Azureadmin"
+            "value": "azureadmin"
         },
         "adminPassword": {
             "value": null
         },
         "diagnosticsStorageAccountName": {
-            "value": "devops100diag"
+            "value": "forest2019diag"
         },
         "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/devops100diag"
+            "value": "Microsoft.Storage/storageAccounts/forest2019diag"
         },
         "diagnosticsStorageAccountType": {
             "value": "Standard_LRS"
@@ -88,14 +88,23 @@
         "diagnosticsStorageAccountKind": {
             "value": "Storage"
         },
+        "availabilitySetName": {
+            "value": "AV2019"
+        },
+        "availabilitySetPlatformFaultDomainCount": {
+            "value": 2
+        },
+        "availabilitySetPlatformUpdateDomainCount": {
+            "value": 5
+        },
         "autoShutdownStatus": {
             "value": "Enabled"
         },
         "autoShutdownTime": {
-            "value": "17:00"
+            "value": "19:00"
         },
         "autoShutdownTimeZone": {
-            "value": "Eastern Standard Time"
+            "value": "UTC"
         },
         "autoShutdownNotificationStatus": {
             "value": "Disabled"

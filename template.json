@@ -65,6 +65,15 @@
         "diagnosticsStorageAccountKind": {
             "type": "string"
         },
+        "availabilitySetName": {
+            "type": "string"
+        },
+        "availabilitySetPlatformFaultDomainCount": {
+            "type": "int"
+        },
+        "availabilitySetPlatformUpdateDomainCount": {
+            "type": "int"
+        },
         "autoShutdownStatus": {
             "type": "string"
         },
@@ -157,7 +166,8 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]",
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]"
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]",
+                "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]"
             ],
             "properties": {
                 "hardwareProfile": {
@@ -199,6 +209,9 @@
                         "enabled": true,
                         "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
                     }
+                },
+                "availabilitySet": {
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
                 }
             }
         },
@@ -211,6 +224,19 @@
             "kind": "[parameters('diagnosticsStorageAccountKind')]",
             "sku": {
                 "name": "[parameters('diagnosticsStorageAccountType')]"
+            }
+        },
+        {
+            "name": "[parameters('availabilitySetName')]",
+            "type": "Microsoft.Compute/availabilitySets",
+            "apiVersion": "2016-04-30-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "platformFaultDomainCount": "[parameters('availabilitySetPlatformFaultDomainCount')]",
+                "platformUpdateDomainCount": "[parameters('availabilitySetPlatformUpdateDomainCount')]"
+            },
+            "sku": {
+                "name": "Aligned"
             }
         },
         {
@@ -235,6 +261,46 @@
                     "timeInMinutes": "30"
                 }
             }
+        },
+        {
+            "name": "Microsoft.DSC-20190612111401",
+            "apiVersion": "2015-01-01",
+            "type": "Microsoft.Resources/deployments",
+            "properties": {
+                "mode": "incremental",
+                "templateLink": {
+                    "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.DSC-arm.2.0.8/Artifacts/MainTemplate.json"
+                },
+                "parameters": {
+                    "vmName": {
+                        "value": "SherwoodDC1"
+                    },
+                    "location": {
+                        "value": "southcentralus"
+                    },
+                    "modulesUrl": {
+                        "value": "https://iaasv2tempstoreeastus.blob.core.windows.net/vmextensionstemporary-1003000093f2a8c8-20190612151020797/MSFT_xADDomain.psm1?sv=2017-04-17&sr=c&sig=dxxJCbiFM7vMK5YW2%2F23TuPNJMKX41sM%2B%2FEFS716Ta4%3D&se=2019-06-13T15%3A10%3A20Z&sp=rw"
+                    },
+                    "configurationFunction": {
+                        "value": "msft_xaddomain.ps1\\msft_xaddomain"
+                    },
+                    "wmfVersion": {
+                        "value": "latest"
+                    },
+                    "privacy": {
+                        "value": "Enable"
+                    },
+                    "version": {
+                        "value": "2.7"
+                    },
+                    "autoUpdate": {
+                        "value": true
+                    }
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+            ]
         }
     ],
     "outputs": {

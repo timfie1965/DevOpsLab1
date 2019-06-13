@@ -1,0 +1,81 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "createChildDomain": {
+      "value": true
+    },
+    "createSecondDc": {
+      "value": true
+    },
+    "DomainName": {
+      "value": "complex.com"
+    },
+    "ChildDomainName": {
+      "value": "child"
+    },
+    "adminUsername": {
+      "value": "azureadmin"
+    },
+    "adminPassword": {
+      "value": "Azurepass2019!"
+    },
+    "VMSize": {
+      "value": "Standard_DS1_v2"
+    },
+    "imageSKU": {
+      "value": "2019-Datacenter"
+    },
+    "diskType": {
+      "value": "StandardSSD_LRS"
+    },
+    "virtualNetworkName": {
+      "value": "adVNET"
+    },
+    "virtualNetworkAddressRange": {
+      "value": "10.0.0.0/22"
+    },
+    "externalDNSForwarder": {
+      "value": "168.63.129.16"
+    },
+    "adSubnetName": {
+      "value": "adSubnet"
+    },
+    "adSubnet": {
+      "value": "10.0.0.0/24"
+    },
+    "RootDC1Name": {
+      "value": "rootdc1"
+    },
+    "RootDC1IPAddress": {
+      "value": "10.0.0.4"
+    },
+    "RootDC2Name": {
+      "value": "rootdc2"
+    },
+    "RootDC2IPAddress": {
+      "value": "10.0.0.5"
+    },
+    "ChildDC3Name": {
+      "value": "childdc3"
+    },
+    "ChildDC3IPAddress": {
+      "value": "10.0.0.6"
+    },
+    "ChildDC4Name": {
+      "value": "childdc4"
+    },
+    "ChildDC4IPAddress": {
+      "value": "10.0.0.7"
+    },
+    "location": {
+      "value": "EastUS"
+    },
+    "_artifactsLocation": {
+      "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/301-create-ad-forest-with-subdomain"
+    },
+    "_artifactsLocationSasToken": {
+      "value": ""
+    }
+  }
+}

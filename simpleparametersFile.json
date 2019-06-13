@@ -15,7 +15,7 @@
       "value": "2016-Datacenter"
     },
     "location": {
-      "value": "[resourceGroup().location]"
+      "value": "EastUS"
     }
   }
 }

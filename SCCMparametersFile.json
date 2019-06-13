@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "prefix": {
+      "value": "SCCM"
+    },
+    "adminUsername": {
+      "value": "Azureadmin"
+    },
+    "adminPassword": {
+      "value": "Azurepass2019!"
+    },
+    "_artifactsLocation": {
+      "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sccm-currentbranch/"
+    },
+    "_artifactsLocationSasToken": {
+      "value": "[resourceGroup().location]"
+    },
+    "location": {
+      "value": "[resourceGroup().location]"
+    }
+  }
+}

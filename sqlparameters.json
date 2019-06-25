@@ -31,10 +31,10 @@
                 }
             ]
         },
-        "subnetName": {
+        "existingsubnetName": {
             "value": "adSubnet"
         },
-        "virtualNetworkName": {
+        "existingvirtualNetworkName": {
             "value": "adVnet"
         },
         "addressPrefixes": {

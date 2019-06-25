@@ -17,10 +17,10 @@
         "networkSecurityGroupRules": {
             "type": "array"
         },
-        "subnetName": {
+        "existingsubnetName": {
             "type": "string"
         },
-        "virtualNetworkName": {
+        "existingvirtualNetworkName": {
             "type": "string"
         },
         "addressPrefixes": {
@@ -41,7 +41,7 @@
         "virtualMachineName": {
             "type": "string"
         },
-        "virtualMachineRG": {
+        "existingvirtualMachineRG": {
             "type": "string"
         },
         "osDiskType": {
@@ -128,8 +128,8 @@
     },
     "variables": {
         "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
-        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
+        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('existingvirtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('existingsubnetName'))]"
     },
     "resources": [
         {
@@ -139,7 +139,7 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', parameters('existingvirtualNetworkName'))]",
                 "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
             ],
             "properties": {

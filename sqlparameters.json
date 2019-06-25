@@ -32,7 +32,7 @@
             ]
         },
         "subnetName": {
-            "value": "default"
+            "value": "adSubnet"
         },
         "virtualNetworkName": {
             "value": "adVnet"

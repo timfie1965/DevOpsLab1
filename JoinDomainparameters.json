@@ -21,7 +21,7 @@
             "value": "azureadmin"
         },
         "domainPassword": {
-            "value": null
+            "value": "Azurepass2019!"
         },
         "ouPath": {
             "value": ""
@@ -30,10 +30,10 @@
             "value": 3
         },
         "vmAdminUsername": {
-            "value": "azUreadmin"
+            "value": "azureadmin"
         },
         "vmAdminPassword": {
-            "value": null
+            "value": "Azurepass2019!"
         },
         "location": {
             "value": "EastUS"

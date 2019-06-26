@@ -20,7 +20,7 @@
         "existingsubnetName": {
             "type": "string"
         },
-        "existingvirtualNetworkName": {
+        "virtualNetworkName": {
             "type": "string"
         },
         "addressPrefixes": {

@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "existingVNETName": {
+            "value": "advnet"
+        },
+        "existingSubnetName": {
+            "value": "adsubnet"
+        },
+        "dnsLabelPrefix": {
+            "value": "vmjoined"
+        },
+        "vmSize": {
+            "value": "Standard_A2"
+        },
+        "domainToJoin": {
+            "value": "complex.com"
+        },
+        "domainUsername": {
+            "value": "azureadmin"
+        },
+        "domainPassword": {
+            "value": null
+        },
+        "ouPath": {
+            "value": ""
+        },
+        "domainJoinOptions": {
+            "value": 3
+        },
+        "vmAdminUsername": {
+            "value": "azUreadmin"
+        },
+        "vmAdminPassword": {
+            "value": null
+        },
+        "location": {
+            "value": "EastUS"
+        }
+    }
+}

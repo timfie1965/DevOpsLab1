@@ -41,7 +41,7 @@
         "virtualMachineName": {
             "type": "string"
         },
-        "existingvirtualMachineRG": {
+        "virtualMachineRG": {
             "type": "string"
         },
         "osDiskType": {

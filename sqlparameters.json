@@ -45,7 +45,7 @@
         "subnets": {
             "value": [
                 {
-                    "name": "default",
+                    "name": "adSubnet",
                     "properties": {
                         "addressPrefix": "10.0.0.0/24"
                     }

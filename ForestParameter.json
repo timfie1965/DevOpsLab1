@@ -45,25 +45,25 @@
       "value": "10.0.0.0/24"
     },
     "RootDC1Name": {
-      "value": "rootdc1"
+      "value": "RootDC1"
     },
     "RootDC1IPAddress": {
       "value": "10.0.0.4"
     },
     "RootDC2Name": {
-      "value": "rootdc2"
+      "value": "RootDC2"
     },
     "RootDC2IPAddress": {
       "value": "10.0.0.5"
     },
     "ChildDC3Name": {
-      "value": "childdc3"
+      "value": "ChildDC1"
     },
     "ChildDC3IPAddress": {
       "value": "10.0.0.6"
     },
     "ChildDC4Name": {
-      "value": "childdc4"
+      "value": "ChildDC2"
     },
     "ChildDC4IPAddress": {
       "value": "10.0.0.7"

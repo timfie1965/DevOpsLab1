@@ -9,7 +9,7 @@
       "value": "Azurepass2019!"
     },
     "dnsLabelPrefix": {
-      "value": "simplevm"
+      "value": "20190SVR01"
     },
     "windowsOSVersion": {
       "value": "2016-Datacenter"

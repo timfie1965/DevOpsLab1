@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "existingVNETName": {
-            "value": "advnet"
+            "value": "forestvnet"
         },
         "existingSubnetName": {
-            "value": "adsubnet"
+            "value": "forestsubnet"
         },
         "dnsLabelPrefix": {
             "value": "2019SVR"

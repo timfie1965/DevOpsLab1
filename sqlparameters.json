@@ -32,10 +32,10 @@
             ]
         },
         "subnetName": {
-            "value": "adSubnet"
+            "value": "forestSubnet"
         },
         "virtualNetworkName": {
-            "value": "adVnet"
+            "value": "forestVnet"
         },
         "addressPrefixes": {
             "value": [

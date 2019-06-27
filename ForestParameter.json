@@ -9,7 +9,7 @@
       "value": true
     },
     "DomainName": {
-      "value": "complex.com"
+      "value": "2019forest.com"
     },
     "ChildDomainName": {
       "value": "child"
@@ -30,7 +30,7 @@
       "value": "StandardSSD_LRS"
     },
     "virtualNetworkName": {
-      "value": "adVNET"
+      "value": "forestVNET"
     },
     "virtualNetworkAddressRange": {
       "value": "10.0.0.0/22"
@@ -39,7 +39,7 @@
       "value": "168.63.129.16"
     },
     "adSubnetName": {
-      "value": "adSubnet"
+      "value": "forestSubnet"
     },
     "adSubnet": {
       "value": "10.0.0.0/24"

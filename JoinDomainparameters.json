@@ -9,7 +9,7 @@
             "value": "adsubnet"
         },
         "dnsLabelPrefix": {
-            "value": "vmjoined"
+            "value": "2019SVR"
         },
         "vmSize": {
             "value": "Standard_A2"

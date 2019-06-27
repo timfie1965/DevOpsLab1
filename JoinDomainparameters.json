@@ -15,7 +15,7 @@
             "value": "Standard_A2"
         },
         "domainToJoin": {
-            "value": "2019lab.com"
+            "value": "2019forest.com"
         },
         "domainUsername": {
             "value": "azureadmin"

@@ -32,10 +32,10 @@
             ]
         },
         "subnetName": {
-            "value": "forestSubnet"
+            "value": "forestsubnet"
         },
         "virtualNetworkName": {
-            "value": "forestVnet"
+            "value": "forestvnet"
         },
         "addressPrefixes": {
             "value": [
@@ -45,7 +45,7 @@
         "subnets": {
             "value": [
                 {
-                    "name": "adSubnet",
+                    "name": "forestsubnet",
                     "properties": {
                         "addressPrefix": "10.0.0.0/24"
                     }

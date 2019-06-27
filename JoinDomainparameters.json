@@ -9,7 +9,7 @@
             "value": "forestsubnet"
         },
         "dnsLabelPrefix": {
-            "value": "2019SVR"
+            "value": "membersvr01"
         },
         "vmSize": {
             "value": "Standard_A2"

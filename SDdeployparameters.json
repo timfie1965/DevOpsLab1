@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "numberOfSubnets": {
+      "value": 3
+    },
+    "memberServersPerSubnet": {
+      "value": 1
+    },
+    "storageCategory": {
+      "value": "Standard"
+    },
+    "domainName": {
+      "value": "fabrikam.com"
+    },
+    "assetLocation": {
+      "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/301-subnet-driven-deployment/"
+    },
+    "adminUsername": {
+      "value": "azureadmin"
+    },
+    "adminPassword": {
+      "value": "Azurrepass2019!"
+    },
+    "dnsLabelPrefix": {
+      "value": "SDdeploy"
+    }
+  }
+}

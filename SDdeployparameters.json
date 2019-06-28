@@ -24,7 +24,7 @@
       "value": "Azurrepass2019!"
     },
     "dnsLabelPrefix": {
-      "value": "SDdeploy"
+      "value": "sddeploy"
     }
   }
 }

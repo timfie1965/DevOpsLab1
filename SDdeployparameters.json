@@ -12,7 +12,7 @@
       "value": "Standard"
     },
     "domainName": {
-      "value": "fabrikam.com"
+      "value": "sddeploy.com"
     },
     "assetLocation": {
       "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/301-subnet-driven-deployment/"

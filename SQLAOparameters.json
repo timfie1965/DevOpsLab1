@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namePrefix": {
+      "value": "SQLAO"
+    },
+    "diskType": {
+      "value": "Premium_LRS"
+    },
+    "sqlVMSize": {
+      "value": "Standard_DS3_V2"
+    },
+    "sqlWitnessVMSize": {
+      "value": "Standard_DS1_V2"
+    },
+    "existingDomainName": {
+      "value": "2019forest.com"
+    },
+    "adminUsername": {
+      "value": "azureadmin"
+    },
+    "adminPassword": {
+      "value": "Azurepass2019!"
+    },
+    "sqlServerServiceAccountUserName": {
+      "value": "azureadmin"
+    },
+    "sqlServerServiceAccountPassword": {
+      "value": "Azurepass2019!"
+    },
+    "existingVirtualNetworkId": {
+      "value": "forestvnet"
+    },
+    "existingSqlSubnetName": {
+      "value": "forestsubnet"
+    },
+    "existingAdPDCVMName": {
+      "value": "rootdc1"
+    },
+    "sqlLBIPAddress": {
+      "value": "10.0.1.10"
+    },
+    "_artifactsLocation": {
+      "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sql-server-2014-alwayson-existing-vnet-and-ad"
+    },
+    "_artifactsLocationSasToken": {
+      "value": ""
+    },
+    "location": {
+      "value": "EastUS"
+    }
+  }
+}

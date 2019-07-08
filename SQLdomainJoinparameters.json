@@ -45,7 +45,7 @@
       "value": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/sql-server-2014-alwayson-existing-vnet-and-ad"
     },
     "_artifactsLocationSasToken": {
-      "value": null
+      "value": ""
     },
     "location": {
       "value": "EastUS"

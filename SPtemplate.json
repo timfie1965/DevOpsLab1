@@ -1,0 +1,126 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "extensions_ConfigureOWAVM_modulesUrl": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "extensions_ConfigureOWAVM_configurationFunction": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_OWA_name": {
+            "defaultValue": "OWA",
+            "type": "String"
+        },
+        "disks_Disk_OWA_OS_externalid": {
+            "defaultValue": "/subscriptions/66d15cfe-7ce0-44d6-a6ee-ecafb7b0fb12/resourceGroups/dassp2016-rg/providers/Microsoft.Compute/disks/Disk-OWA-OS",
+            "type": "String"
+        },
+        "disks_Disk_OWA_Data_externalid": {
+            "defaultValue": "/subscriptions/66d15cfe-7ce0-44d6-a6ee-ecafb7b0fb12/resourceGroups/dassp2016-rg/providers/Microsoft.Compute/disks/Disk-OWA-Data",
+            "type": "String"
+        },
+        "networkInterfaces_NIC_OWA_0_externalid": {
+            "defaultValue": "/subscriptions/66d15cfe-7ce0-44d6-a6ee-ecafb7b0fb12/resourceGroups/dassp2016-rg/providers/Microsoft.Network/networkInterfaces/NIC-OWA-0",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2019-03-01",
+            "name": "[parameters('virtualMachines_OWA_name')]",
+            "location": "eastus2",
+            "tags": {
+                "displayName": "OWA"
+            },
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D11_v2"
+                },
+                 "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2016-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[concat('Disk-', parameters('virtualMachines_OWA_name'), '-OS')]",
+                        "createOption": "FromImage",
+                        "caching": "ReadWrite",
+                        "managedDisk": {
+                            "storageAccountType": "Standard_LRS",
+                            "id": "[parameters('disks_Disk_OWA_OS_externalid')]"
+                        },
+                        "diskSizeGB": 128
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat('Disk-', parameters('virtualMachines_OWA_name'), '-Data')]",
+                            "createOption": "Empty",
+                            "caching": "ReadWrite",
+                            "managedDisk": {
+                                "storageAccountType": "Standard_LRS",
+                                "id": "[parameters('disks_Disk_OWA_Data_externalid')]"
+                            },
+                            "diskSizeGB": 100,
+                            "toBeDetached": false
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_OWA_name')]",
+                    "adminUsername": "anneste",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true,
+                        "timeZone": "US Eastern Standard Time"
+                    },
+                    "secrets": [],
+                    "allowExtensionOperations": true
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[parameters('networkInterfaces_NIC_OWA_0_externalid')]"
+                        }
+                    ]
+                },
+                "licenseType": "Windows_Server"
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "apiVersion": "2019-03-01",
+            "name": "[concat(parameters('virtualMachines_OWA_name'), '/Configure', parameters('virtualMachines_OWA_name'), 'VM')]",
+            "location": "eastus2",
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_OWA_name'))]"
+            ],
+            "tags": {
+                "displayName": "OWA/ConfigureOWAVM"
+            },
+            "properties": {
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "wmfVersion": "latest",
+                    "privacy": {
+                        "dataCollection": "enable"
+                    },
+                    "modulesUrl": "[parameters('extensions_ConfigureOWAVM_modulesUrl')]",
+                    "configurationFunction": "[parameters('extensions_ConfigureOWAVM_configurationFunction')]"
+                },
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.9",
+                "protectedSettings": {}
+            }
+        }
+    ]
+}

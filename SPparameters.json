@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "extensions_ConfigureOWAVM_modulesUrl": {
+            "value": null
+        },
+        "extensions_ConfigureOWAVM_configurationFunction": {
+            "value": null
+        },
+        "virtualMachines_OWA_name": {
+            "value": null
+        },
+        "disks_Disk_OWA_OS_externalid": {
+            "value": null
+        },
+        "disks_Disk_OWA_Data_externalid": {
+            "value": null
+        },
+        "networkInterfaces_NIC_OWA_0_externalid": {
+            "value": null
+        }
+    }
+}

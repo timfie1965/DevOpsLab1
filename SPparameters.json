@@ -3,22 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "extensions_ConfigureOWAVM_modulesUrl": {
-            "value": null
+            "value": "OWAURL"
         },
         "extensions_ConfigureOWAVM_configurationFunction": {
-            "value": null
+            "value": "OWA"
         },
         "virtualMachines_OWA_name": {
-            "value": null
+            "value": "OWSsvr1"
         },
         "disks_Disk_OWA_OS_externalid": {
-            "value": null
+            "value": "OWSsvr1OSExt"
         },
         "disks_Disk_OWA_Data_externalid": {
-            "value": null
+            "value": "OWSsvr1DataExt"
         },
         "networkInterfaces_NIC_OWA_0_externalid": {
-            "value": null
+            "value": "OWSsvr1"
         }
     }
 }

@@ -3,310 +3,88 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "string"
-        },
-        "networkInterfaceName": {
-            "type": "string"
-        },
-        "networkSecurityGroupName": {
-            "type": "string"
-        },
-        "networkSecurityGroupRules": {
-            "type": "array"
-        },
-        "subnetName": {
-            "type": "string"
+            "type": "String"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "type": "String"
         },
-        "addressPrefixes": {
-            "type": "array"
+        "resourceGroup": {
+            "type": "String"
         },
-        "subnets": {
-            "type": "array"
+        "addressSpaces": {
+            "type": "Array"
         },
-        "publicIpAddressName": {
-            "type": "string"
+        "ipv6Enabled": {
+            "type": "Bool"
         },
-        "publicIpAddressType": {
-            "type": "string"
+        "subnetCount": {
+            "type": "Int"
         },
-        "publicIpAddressSku": {
-            "type": "string"
+        "subnet0_name": {
+            "type": "String"
         },
-        "virtualMachineName": {
-            "type": "string"
+        "subnet0_addressRange": {
+            "type": "String"
         },
-        "virtualMachineRG": {
-            "type": "string"
+        "subnet1_name": {
+            "type": "String"
         },
-        "osDiskType": {
-            "type": "string"
+        "subnet1_addressRange": {
+            "type": "String"
         },
-        "virtualMachineSize": {
-            "type": "string"
+        "subnet2_name": {
+            "type": "String"
         },
-        "adminUsername": {
-            "type": "string"
+        "subnet2_addressRange": {
+            "type": "String"
         },
-        "adminPassword": {
-            "type": "secureString"
+        "ddosProtectionPlanEnabled": {
+            "type": "Bool"
         },
-        "diagnosticsStorageAccountName": {
-            "type": "string"
+        "firewallEnabled": {
+            "type": "Bool"
         },
-        "diagnosticsStorageAccountId": {
-            "type": "string"
-        },
-        "diagnosticsStorageAccountType": {
-            "type": "string"
-        },
-        "diagnosticsStorageAccountKind": {
-            "type": "string"
-        },
-        "availabilitySetName": {
-            "type": "string"
-        },
-        "availabilitySetPlatformFaultDomainCount": {
-            "type": "int"
-        },
-        "availabilitySetPlatformUpdateDomainCount": {
-            "type": "int"
-        },
-        "autoShutdownStatus": {
-            "type": "string"
-        },
-        "autoShutdownTime": {
-            "type": "string"
-        },
-        "autoShutdownTimeZone": {
-            "type": "string"
-        },
-        "autoShutdownNotificationStatus": {
-            "type": "string"
-        },
-        "autoShutdownNotificationLocale": {
-            "type": "string"
+        "bastionEnabled": {
+            "type": "Bool"
         }
     },
-    "variables": {
-        "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
-        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
-    },
+    "variables": {},
     "resources": [
         {
-            "name": "[parameters('networkInterfaceName')]",
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2018-10-01",
+            "type": "Microsoft.Network/VirtualNetworks",
+            "apiVersion": "2019-09-01",
+            "name": "[parameters('virtualNetworkName')]",
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
-                "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
-                "[concat('Microsoft.Network/publicIpAddresses/', parameters('publicIpAddressName'))]"
-            ],
+            "dependsOn": [],
+            "tags": {},
             "properties": {
-                "ipConfigurations": [
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "192.168.0.0/16"
+                    ]
+                },
+                "subnets": [
                     {
-                        "name": "ipconfig1",
+                        "name": "MgmtSubnet",
                         "properties": {
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIpAddress": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
-                            }
+                            "addressPrefix": "192.168.1.0/24"
+                        }
+                    },
+                    {
+                        "name": "DBsubnet",
+                        "properties": {
+                            "addressPrefix": "192.168.2.0/24"
+                        }
+                    },
+                    {
+                        "name": "WebSubnet",
+                        "properties": {
+                            "addressPrefix": "192.168.3.0/24"
                         }
                     }
                 ],
-                "networkSecurityGroup": {
-                    "id": "[variables('nsgId')]"
-                }
+                "enableDdosProtection": "[parameters('ddosProtectionPlanEnabled')]"
             }
-        },
-        {
-            "name": "[parameters('networkSecurityGroupName')]",
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2019-02-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "securityRules": "[parameters('networkSecurityGroupRules')]"
-            }
-        },
-        {
-            "name": "[parameters('virtualNetworkName')]",
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2019-02-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": "[parameters('addressPrefixes')]"
-                },
-                "subnets": "[parameters('subnets')]"
-            }
-        },
-        {
-            "name": "[parameters('publicIpAddressName')]",
-            "type": "Microsoft.Network/publicIpAddresses",
-            "apiVersion": "2019-02-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIpAllocationMethod": "[parameters('publicIpAddressType')]"
-            },
-            "sku": {
-                "name": "[parameters('publicIpAddressSku')]"
-            }
-        },
-        {
-            "name": "[parameters('virtualMachineName')]",
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2018-10-01",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]",
-                "[concat('Microsoft.Storage/storageAccounts/', parameters('diagnosticsStorageAccountName'))]",
-                "[concat('Microsoft.Compute/availabilitySets/', parameters('availabilitySetName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('virtualMachineSize')]"
-                },
-                "storageProfile": {
-                    "osDisk": {
-                        "createOption": "fromImage",
-                        "managedDisk": {
-                            "storageAccountType": "[parameters('osDiskType')]"
-                        }
-                    },
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "2019-Datacenter",
-                        "version": "latest"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
-                        }
-                    ]
-                },
-                "osProfile": {
-                    "computerName": "[parameters('virtualMachineName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]",
-                    "windowsConfiguration": {
-                        "enableAutomaticUpdates": true,
-                        "provisionVmAgent": true
-                    }
-                },
-                "licenseType": "Windows_Server",
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
-                    }
-                },
-                "availabilitySet": {
-                    "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName'))]"
-                }
-            }
-        },
-        {
-            "name": "[parameters('diagnosticsStorageAccountName')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-07-01",
-            "location": "[parameters('location')]",
-            "properties": {},
-            "kind": "[parameters('diagnosticsStorageAccountKind')]",
-            "sku": {
-                "name": "[parameters('diagnosticsStorageAccountType')]"
-            }
-        },
-        {
-            "name": "[parameters('availabilitySetName')]",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-04-30-preview",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": "[parameters('availabilitySetPlatformFaultDomainCount')]",
-                "platformUpdateDomainCount": "[parameters('availabilitySetPlatformUpdateDomainCount')]"
-            },
-            "sku": {
-                "name": "Aligned"
-            }
-        },
-        {
-            "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
-            "type": "Microsoft.DevTestLab/schedules",
-            "apiVersion": "2017-04-26-preview",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
-            ],
-            "properties": {
-                "status": "[parameters('autoShutdownStatus')]",
-                "taskType": "ComputeVmShutdownTask",
-                "dailyRecurrence": {
-                    "time": "[parameters('autoShutdownTime')]"
-                },
-                "timeZoneId": "[parameters('autoShutdownTimeZone')]",
-                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]",
-                "notificationSettings": {
-                    "status": "[parameters('autoShutdownNotificationStatus')]",
-                    "notificationLocale": "[parameters('autoShutdownNotificationLocale')]",
-                    "timeInMinutes": "30"
-                }
-            }
-        },
-        {
-            "name": "Microsoft.DSC-20190612111401",
-            "apiVersion": "2015-01-01",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "https://gallery.azure.com/artifact/20161101/Microsoft.DSC-arm.2.0.8/Artifacts/MainTemplate.json"
-                },
-                "parameters": {
-                    "vmName": {
-                        "value": "SherwoodDC1"
-                    },
-                    "location": {
-                        "value": "southcentralus"
-                    },
-                    "modulesUrl": {
-                        "value": "https://iaasv2tempstoreeastus.blob.core.windows.net/vmextensionstemporary-1003000093f2a8c8-20190612151020797/MSFT_xADDomain.psm1?sv=2017-04-17&sr=c&sig=dxxJCbiFM7vMK5YW2%2F23TuPNJMKX41sM%2B%2FEFS716Ta4%3D&se=2019-06-13T15%3A10%3A20Z&sp=rw"
-                    },
-                    "configurationFunction": {
-                        "value": "msft_xaddomain.ps1\\msft_xaddomain"
-                    },
-                    "wmfVersion": {
-                        "value": "latest"
-                    },
-                    "privacy": {
-                        "value": "Enable"
-                    },
-                    "version": {
-                        "value": "2.7"
-                    },
-                    "autoUpdate": {
-                        "value": true
-                    }
-                }
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
-            ]
         }
-    ],
-    "outputs": {
-        "adminUsername": {
-            "type": "string",
-            "value": "[parameters('adminUsername')]"
-        }
-    }
+    ]
 }

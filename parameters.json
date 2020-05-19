@@ -5,112 +5,49 @@
         "location": {
             "value": "eastus"
         },
-        "networkInterfaceName": {
-            "value": "sherwooddc1762"
-        },
-        "networkSecurityGroupName": {
-            "value": "SherwoodDC1-nsg"
-        },
-        "networkSecurityGroupRules": {
-            "value": [
-                {
-                    "name": "RDP",
-                    "properties": {
-                        "priority": 300,
-                        "protocol": "TCP",
-                        "access": "Allow",
-                        "direction": "Inbound",
-                        "sourceAddressPrefix": "*",
-                        "sourcePortRange": "*",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "3389"
-                    }
-                }
-            ]
-        },
-        "subnetName": {
-            "value": "default"
-        },
         "virtualNetworkName": {
-            "value": "Forest2019-vnet"
+            "value": "OnPremVnet"
         },
-        "addressPrefixes": {
+        "resourceGroup": {
+            "value": "OnPrem"
+        },
+        "addressSpaces": {
             "value": [
-                "10.0.1.0/24"
+                "192.168.0.0/16"
             ]
         },
-        "subnets": {
-            "value": [
-                {
-                    "name": "default",
-                    "properties": {
-                        "addressPrefix": "10.0.1.0/24"
-                    }
-                }
-            ]
+        "ipv6Enabled": {
+            "value": false
         },
-        "publicIpAddressName": {
-            "value": "SherwoodDC1-ip"
+        "subnetCount": {
+            "value": 3
         },
-        "publicIpAddressType": {
-            "value": "Dynamic"
+        "subnet0_name": {
+            "value": "MgmtSubnet"
         },
-        "publicIpAddressSku": {
-            "value": "Basic"
+        "subnet0_addressRange": {
+            "value": "192.168.1.0/24"
         },
-        "virtualMachineName": {
-            "value": "SherwoodDC1"
+        "subnet1_name": {
+            "value": "DBsubnet"
         },
-        "virtualMachineRG": {
-            "value": "Forest2019"
+        "subnet1_addressRange": {
+            "value": "192.168.2.0/24"
         },
-        "osDiskType": {
-            "value": "Premium_LRS"
+        "subnet2_name": {
+            "value": "WebSubnet"
         },
-        "virtualMachineSize": {
-            "value": "Standard_DS1_v2"
+        "subnet2_addressRange": {
+            "value": "192.168.3.0/24"
         },
-        "adminUsername": {
-            "value": "azureadmin"
+        "ddosProtectionPlanEnabled": {
+            "value": false
         },
-        "adminPassword": {
-            "value": "Azurepass2019!"
+        "firewallEnabled": {
+            "value": false
         },
-        "diagnosticsStorageAccountName": {
-            "value": "forest2019diag"
-        },
-        "diagnosticsStorageAccountId": {
-            "value": "Microsoft.Storage/storageAccounts/forest2019diag"
-        },
-        "diagnosticsStorageAccountType": {
-            "value": "Standard_LRS"
-        },
-        "diagnosticsStorageAccountKind": {
-            "value": "Storage"
-        },
-        "availabilitySetName": {
-            "value": "AV2019"
-        },
-        "availabilitySetPlatformFaultDomainCount": {
-            "value": 2
-        },
-        "availabilitySetPlatformUpdateDomainCount": {
-            "value": 5
-        },
-        "autoShutdownStatus": {
-            "value": "Enabled"
-        },
-        "autoShutdownTime": {
-            "value": "19:00"
-        },
-        "autoShutdownTimeZone": {
-            "value": "UTC"
-        },
-        "autoShutdownNotificationStatus": {
-            "value": "Disabled"
-        },
-        "autoShutdownNotificationLocale": {
-            "value": "en"
+        "bastionEnabled": {
+            "value": false
         }
     }
 }

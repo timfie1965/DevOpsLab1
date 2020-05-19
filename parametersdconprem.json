@@ -72,7 +72,7 @@
             "value": "AzureAdmin"
         },
         "adminPassword": {
-            "value": null
+            "value": "azurepass2020!"
         }
     }
 }

@@ -6,13 +6,13 @@
             "value": "azureadmin"
         },
         "adminPassword": {
-            "value": null
+            "value": "Azurepass2021!"
         },
         "domainName": {
             "value": "2021lab.com"
         },
         "dnsPrefix": {
-            "value": "lb01"
+            "value": "addc01"
         },
         "vmSize": {
             "value": "Standard_D2s_v3"

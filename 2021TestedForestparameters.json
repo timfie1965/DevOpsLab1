@@ -1,0 +1,63 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "value": "azureadmin"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "domainName": {
+            "value": "2021lab.com"
+        },
+        "dnsPrefix": {
+            "value": "lb01"
+        },
+        "vmSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "location": {
+            "value": "eastus2"
+        },
+        "virtualMachineName": {
+            "value": "adVM"
+        },
+        "virtualNetworkName": {
+            "value": "adVNET"
+        },
+        "virtualNetworkAddressRange": {
+            "value": "10.0.0.0/16"
+        },
+        "loadBalancerFrontEndIPName": {
+            "value": "LBFE"
+        },
+        "backendAddressPoolName": {
+            "value": "LBBE"
+        },
+        "inboundNatRulesName": {
+            "value": "adRDP"
+        },
+        "networkInterfaceName": {
+            "value": "adNic"
+        },
+        "privateIPAddress": {
+            "value": "10.0.0.4"
+        },
+        "subnetName": {
+            "value": "adSubnet"
+        },
+        "subnetRange": {
+            "value": "10.0.0.0/24"
+        },
+        "publicIPAddressName": {
+            "value": "adPublicIP"
+        },
+        "availabilitySetName": {
+            "value": "adAvailabiltySet"
+        },
+        "loadBalancerName": {
+            "value": "adLoadBalancer"
+        }
+    }
+}

@@ -6,7 +6,7 @@
             "value": "azureadmin"
         },
         "adminPassword": {
-            "value": null
+            "value": "Azurepass2021!"
         },
         "domainName": {
             "value": "myazurelab.com"

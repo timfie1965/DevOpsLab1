@@ -1,90 +1,28 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
     "parameters": {
-        "location": {
-            "type": "String"
+        "rgName": {
+            "type": "string"
         },
-        "virtualNetworkName": {
-            "type": "String"
+        "rgLocation": {
+            "type": "string"
         },
-        "resourceGroup": {
-            "type": "String"
-        },
-        "addressSpaces": {
-            "type": "Array"
-        },
-        "ipv6Enabled": {
-            "type": "Bool"
-        },
-        "subnetCount": {
-            "type": "Int"
-        },
-        "subnet0_name": {
-            "type": "String"
-        },
-        "subnet0_addressRange": {
-            "type": "String"
-        },
-        "subnet1_name": {
-            "type": "String"
-        },
-        "subnet1_addressRange": {
-            "type": "String"
-        },
-        "subnet2_name": {
-            "type": "String"
-        },
-        "subnet2_addressRange": {
-            "type": "String"
-        },
-        "ddosProtectionPlanEnabled": {
-            "type": "Bool"
-        },
-        "firewallEnabled": {
-            "type": "Bool"
-        },
-        "bastionEnabled": {
-            "type": "Bool"
+        "tags": {
+            "type": "object",
+            "defaultValue": {}
         }
     },
     "variables": {},
     "resources": [
         {
-            "type": "Microsoft.Network/VirtualNetworks",
-            "apiVersion": "2019-09-01",
-            "name": "[parameters('virtualNetworkName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [],
-            "tags": {},
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "192.168.0.0/16"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "MgmtSubnet",
-                        "properties": {
-                            "addressPrefix": "192.168.1.0/24"
-                        }
-                    },
-                    {
-                        "name": "DBsubnet",
-                        "properties": {
-                            "addressPrefix": "192.168.2.0/24"
-                        }
-                    },
-                    {
-                        "name": "WebSubnet",
-                        "properties": {
-                            "addressPrefix": "192.168.3.0/24"
-                        }
-                    }
-                ],
-                "enableDdosProtection": "[parameters('ddosProtectionPlanEnabled')]"
-            }
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2018-05-01",
+            "location": "[parameters('rgLocation')]",
+            "name": "[parameters('rgName')]",
+            "properties": {},
+            "tags": "[parameters('tags')]"
         }
-    ]
+    ],
+    "outputs": {}
 }

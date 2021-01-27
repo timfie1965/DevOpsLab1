@@ -42,7 +42,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/timfie1965/DevOpsLab1/master/forestDCmodule.json#",
+                    "uri": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/modules/active-directory-new-domain/0.9/azuredeploy.json#",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {

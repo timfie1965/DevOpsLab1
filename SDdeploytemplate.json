@@ -4,7 +4,7 @@
     "parameters": {
         "numberOfSubnets": {
             "type": "int",
-            "defaultValue": 3,
+            "defaultValue": 2,
             "minValue": 2,
             "maxValue": 20,
             "metadata": {
@@ -70,7 +70,7 @@
         "storageAccountSuffix": "st",
         "storageAccountType": "[concat(parameters('storageCategory'),'_LRS')]",
         "adDataDiskSize": "30",
-        "mbrDataDiskSize": "127"
+        "mbrDataDiskSize": "30"
     },
     "resources": [
         {

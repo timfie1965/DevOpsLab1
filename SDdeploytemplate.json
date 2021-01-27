@@ -65,7 +65,7 @@
         }
     },
     "variables": {
-        "vnetName": "[uniqueString(resourceGroup().id, 'labVNet')]",
+        "vnetName": "labVNet",
         "labVNetPrefix": "172.16.0.0/12",
         "storageAccountSuffix": "st",
         "storageAccountType": "[concat(parameters('storageCategory'),'_LRS')]",

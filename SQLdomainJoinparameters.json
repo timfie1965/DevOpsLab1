@@ -15,19 +15,19 @@
       "value": "Standard_DS1_V2"
     },
     "existingDomainName": {
-      "value": "2019lab.com"
+      "value": "onpremlab.com"
     },
     "adminUsername": {
       "value": "azureadmin"
     },
     "adminPassword": {
-      "value": "Azurepass2019!"
+      "value": "Azurepass2021!"
     },
     "sqlServerServiceAccountUserName": {
       "value": "sqladmin"
     },
     "sqlServerServiceAccountPassword": {
-      "value": "Sqlpass2019!"
+      "value": "Sqlpass2021!"
     },
     "existingVirtualNetworkId": {
       "value": "existingvnetid"
@@ -36,7 +36,7 @@
       "value": "default"
     },
     "existingAdPDCVMName": {
-      "value": "RootDC1"
+      "value": "DC0"
     },
     "sqlLBIPAddress": {
       "value": "10.0.1.10"

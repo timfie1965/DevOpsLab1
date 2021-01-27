@@ -354,11 +354,6 @@
                     "subnetRange": {
                         "value": "[parameters('subnetRange')]"
                     },
-                    "DNSServerAddress": {
-                        "value": [
-                            "[parameters('privateIPAddress')]"
-                        ]
-                    },
                     "location": {
                         "value": "[parameters('location')]"
                     }

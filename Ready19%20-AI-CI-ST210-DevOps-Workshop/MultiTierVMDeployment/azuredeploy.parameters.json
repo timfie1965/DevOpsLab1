@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "virtualMachineAdminUserName": {
+          "value": "azadmin"
+      },
+      "virtualMachineAdminPassword": {
+          "value": "WinterReady@123"
+      },
+      "virtualMachineNamePrefix": {
+          "value": "MyVM0"
+      },
+      "virtualMachineCount": {
+          "value": 3
+      },
+      "virtualMachineSize": {
+          "value": "Standard_DS3_v2"
+      },
+      "operatingSystem": {
+          "value": "Server2016"
+      },
+      "availabilitySetName": {
+          "value": "MyAvailabilitySet"
+      },
+      "dnsPrefixForPublicIP": {
+          "value": "winter01"
+      },
+      "location": {
+          "value": "centralus"
+      }
+  }
+}

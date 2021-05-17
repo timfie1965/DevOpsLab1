@@ -1,0 +1,10 @@
+steps:
+- task: AzureResourceManagerTemplateDeployment@3
+  displayName: 'ARM Template deployment: Resource Group scope'
+  inputs:
+    azureResourceManagerConnection: 'Microsoft Azure Internal Consumption AF (afb6b21a-1420-4c5f-a8db-c08ee0ea25fc)'
+    subscriptionId: 'afb6b21a-1420-4c5f-a8db-c08ee0ea25fc'
+    resourceGroupName: 'QuickstartJenkins-rg'
+    location: 'East US 2'
+    csmFile: '$(System.DefaultWorkingDirectory)/_Jenkins/Template1.json'
+    csmParametersFile: '$(System.DefaultWorkingDirectory)/_Jenkins/Template1parametersFile.json'
